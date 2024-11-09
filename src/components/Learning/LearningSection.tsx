@@ -1,5 +1,7 @@
+// src/components/LearningSection.tsx
+
 "use client";
-import React, { FC } from "react";
+import React, { FC, ReactNode } from "react";
 import {
   ComposerPrimitive,
   Thread,
@@ -14,7 +16,6 @@ import {
 import { Button } from "../ui/button";
 import { SendHorizontalIcon } from "lucide-react";
 import AI_ThreadSuggestion from "../ui/assistant-ui/AI_ThreadSuggestion";
-import { Level } from "@/types/level";
 
 // Composer component with input field and send button
 const Composer: FC = () => (
@@ -58,86 +59,83 @@ const Composer: FC = () => (
 );
 
 // Main Learning Section with tooltip support and thread configuration
-const LearningSection = ({ level }: Level) => {
+const LearningSection = () => {
   return (
-    <TooltipProvider>
-      <Thread
-        assistantMessage={{
-          allowFeedbackPositive: true,
-          allowFeedbackNegative: true,
-          allowCopy: true,
-          allowReload: true,
-          allowSpeak: true,
-        }}
-        welcome={{
-          message:
-            `مرحبًا، أنا ${level.character.name}. ${level.character.description}` ||
-            null,
-          suggestions: [
-            { prompt: "ما هو دورك في الأدب؟" },
-            { prompt: "ما هي أشهر أعمالك؟" },
-          ],
-        }}
-        userMessage={{
-          allowEdit: true,
-        }}
-        branchPicker={{
-          allowBranchPicker: true,
-        }}
-        composer={{
-          allowAttachments: false,
-        }}
-        components={{
-          Composer,
-        }}
-        strings={{
-          thread: {
-            scrollToBottom: {
-              tooltip: "مرر إلى الأسفل",
-            },
-          },
-          assistantMessage: {
-            reload: {
-              tooltip: "إعادة التحميل",
-            },
-            copy: {
-              tooltip: "نسخ المحتوى",
-            },
-            feedback: {
-              positive: {
-                tooltip: "أعجبني",
-              },
-              negative: {
-                tooltip: "لم يعجبني",
+    <div className="min-h-screen bg-gradient-to-b from-blue-100 to-white">
+      <TooltipProvider>
+        <Thread
+          assistantAvatar={{}}
+          assistantMessage={{
+            allowFeedbackPositive: true,
+            allowFeedbackNegative: true,
+            allowCopy: true,
+            allowReload: true,
+            allowSpeak: true,
+          }}
+          welcome={{ message: "", suggestions: [] }}
+          userMessage={{
+            allowEdit: true,
+          }}
+          branchPicker={{
+            allowBranchPicker: true,
+          }}
+          composer={{
+            allowAttachments: false,
+          }}
+          components={
+            {
+              Composer,
+            }
+          }
+          strings={{
+            thread: {
+              scrollToBottom: {
+                tooltip: "مرر إلى الأسفل",
               },
             },
-          },
-          editComposer: {
-            send: { label: "إرسال" },
-            cancel: { label: "إلغاء" },
-          },
-          composer: {
-            send: {
-              tooltip: "إرسال",
+            assistantMessage: {
+              reload: {
+                tooltip: "إعادة التحميل",
+              },
+              copy: {
+                tooltip: "نسخ المحتوى",
+              },
+              feedback: {
+                positive: {
+                  tooltip: "أعجبني",
+                },
+                negative: {
+                  tooltip: "لم يعجبني",
+                },
+              },
             },
-            cancel: {
-              tooltip: "إلغاء",
+            editComposer: {
+              send: { label: "إرسال" },
+              cancel: { label: "إلغاء" },
             },
-            input: {
-              placeholder: "اكتب سؤالك هنا...",
+            composer: {
+              send: {
+                tooltip: "إرسال",
+              },
+              cancel: {
+                tooltip: "إلغاء",
+              },
+              input: {
+                placeholder: "اكتب سؤالك هنا...",
+              },
             },
-          },
-          branchPicker: {
-            next: {
-              tooltip: "التالي",
+            branchPicker: {
+              next: {
+                tooltip: "التالي",
+              },
+              previous: {
+                tooltip: "السابق",
+              },
             },
-            previous: {
-              tooltip: "السابق",
-            },
-          },
-        }}
-      />
-    </TooltipProvider>
+          }}
+        />
+      </TooltipProvider>
+    </div>
   );
 };
 

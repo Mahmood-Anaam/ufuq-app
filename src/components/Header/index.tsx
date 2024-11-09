@@ -60,7 +60,7 @@ const Header = ({payload}: any = null) => {
                   } `}
                 >
                   <Image
-                    src="/logo/logo.png"
+                    src="/images/logo/logo.png"
                     alt="أفق Logo"
                     width={50}
                     height={50}

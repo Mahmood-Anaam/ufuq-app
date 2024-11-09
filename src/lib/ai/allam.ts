@@ -1,8 +1,8 @@
 import { WatsonxLLM } from "@langchain/community/llms/ibm";
 
 export const props = {
-  decoding_method: "greedy", //"sample",
-  max_new_tokens: 900,
+  decoding_method: "sample",
+  max_new_tokens: 200,
   min_new_tokens: 0,
   temperature: 0.0,
   repetition_penalty:1.5,

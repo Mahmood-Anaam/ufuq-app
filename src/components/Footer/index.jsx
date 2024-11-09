@@ -16,7 +16,7 @@ const Footer = () => {
           {/* Logo & Description */}
           <Link href="/" className="inline-block">
             <Image
-              src="/logo/logo.png"
+              src="/images/logo/logo.png"
               alt="أفق"
               width={45}
               height={45}
