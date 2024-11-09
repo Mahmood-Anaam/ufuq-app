@@ -1,5 +1,5 @@
 "use client";
-import React, { FC, ReactNode } from "react";
+import React, { FC } from "react";
 import {
   ComposerPrimitive,
   Thread,
@@ -14,6 +14,7 @@ import {
 import { Button } from "../ui/button";
 import { SendHorizontalIcon } from "lucide-react";
 import AI_ThreadSuggestion from "../ui/assistant-ui/AI_ThreadSuggestion";
+import { Level } from "@/types/level";
 
 // Composer component with input field and send button
 const Composer: FC = () => (
@@ -57,7 +58,7 @@ const Composer: FC = () => (
 );
 
 // Main Learning Section with tooltip support and thread configuration
-const LearningSection = () => {
+const LearningSection = ({ level }: Level) => {
   return (
     <TooltipProvider>
       <Thread
@@ -68,7 +69,15 @@ const LearningSection = () => {
           allowReload: true,
           allowSpeak: true,
         }}
-        welcome={{ message: "", suggestions: [] }}
+        welcome={{
+          message:
+            `مرحبًا، أنا ${level.character.name}. ${level.character.description}` ||
+            null,
+          suggestions: [
+            { prompt: "ما هو دورك في الأدب؟" },
+            { prompt: "ما هي أشهر أعمالك؟" },
+          ],
+        }}
         userMessage={{
           allowEdit: true,
         }}

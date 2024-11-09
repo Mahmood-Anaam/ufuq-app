@@ -31,7 +31,6 @@ export default function RootLayout({
   const payload = verifyTokenForPage(token);
 
   return (
-    
     <html suppressHydrationWarning lang="ar" dir="rtl">
       <body className={`bg-[#FCFCFC] dark:bg-black ${tajawal.className}`}>
         <Providers>
@@ -54,7 +53,6 @@ export default function RootLayout({
         </Providers>
       </body>
     </html>
-    // </MyRuntimeProvider>
   );
 }
 
